@@ -4,5 +4,8 @@
   "repository": "https://github.com/heroku/node-js-getting-started",
   "logo": "https://cdn.rawgit.com/heroku/node-js-getting-started/main/public/node.svg",
   "keywords": ["node", "express", "heroku"],
-  "image": "heroku/nodejs"
+  "image": "heroku/nodejs",
+  "scripts": {
+  "postdeploy": "heroku config:set DOMAIN = {ENV['HEROKU_APP_NAME']}.herokuapp.com"
+  }
 }
