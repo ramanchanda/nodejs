@@ -12,9 +12,7 @@ express()
   
   .post("/new_contact", function(req, res) { 
 
-  console.log('peerCertificate:',res.req.connection.getPeerCertificate());
-  console.log('authorized:',res.req.connection.authorized);
-  console.log('authorizationError:',res.req.connection.authorizationError);
+  console.log(req.body);
     
     var notification = req.body["soapenv:envelope"]["soapenv:body"][0]["notifications"][0]; var sessionId = notification["sessionid"][0]; var data = {}; if (notification["notification"] !== undefined) { var sobject = notification["notification"][0]["sobject"][0]; Object.keys(sobject).forEach(function(key) { if (key.indexOf("sf:") == 0) { var newKey = key.substr(3); data[newKey] = sobject[key][0]; } }); } res.status(201).end(); })
   
